@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block start %}
+
+  <ul>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/about">About</a></li>
+  </ul>
+  <table class='container table table-success border-primary text-center'>
+    <tr class=''>
+        <th class='border-end border-primary'>S. No</th>
+        <th class='border-end border-primary'>Name</th>
+        <th class='border-end border-primary'>Age</th>
+        <th>Can Vote</th>
+    </tr>
+    {% for people in peoples %}
+    <tr>
+        <td class='border-end border-primary'>{{forloop.counter}}</td>
+        <td class='border-end border-primary'>{{people.name}}</td>
+        <td class='border-end border-primary'>{{people.age}}</td>
+        <td {% if people.age > 18  %} class='bg-primary' {% else %} class='bg-danger' {% endif %}>
+          
+          {% if people.age > 18  %}
+          👍
+          {% else %}
+          👎
+          {% endif %}
+            
+        </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p>{{text|truncatewords:4}}</p>
+{% endblock %}
+
+    
+
